@@ -46,8 +46,11 @@ export function useAppState() {
       .select()
       .single();
 
-    if (!error && saved) setProfile(saved as UserProfile);
-    return { error };
+    if (!error && saved) {
+      setProfile(saved as UserProfile);
+      return { data: saved as UserProfile, error: null };
+    }
+    return { data: null, error };
   }, [userId]);
 
   const addMessage = useCallback(async (msg: Omit<ChatMessage, 'id' | 'user_id' | 'created_at'>) => {
