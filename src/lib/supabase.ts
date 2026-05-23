@@ -77,3 +77,50 @@ export type ChatMessage = {
   metadata: Record<string, unknown>;
   created_at: string;
 };
+
+export type Wallet = {
+  id: string;
+  user_id: string;
+  balance: number;
+  total_earned: number;
+  total_spent: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type WalletTransaction = {
+  id: string;
+  wallet_id: string;
+  user_id: string;
+  type: 'deposit' | 'escrow_hold' | 'escrow_release' | 'payment' | 'refund';
+  amount: number;
+  description: string;
+  gig_id: string | null;
+  created_at: string;
+};
+
+export type Notification = {
+  id: string;
+  user_id: string;
+  type: 'new_gig' | 'gig_match' | 'escrow_release' | 'message' | 'payment' | 'gig_accepted';
+  title: string;
+  content: string;
+  data: Record<string, unknown>;
+  read: boolean;
+  created_at: string;
+};
+
+export type SampleGig = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  pay_min: number;
+  pay_max: number;
+  campus_location: string;
+  is_remote: boolean;
+  poster_name: string;
+  poster_avatar: string | null;
+  distance_mins: number;
+  created_at: string;
+};

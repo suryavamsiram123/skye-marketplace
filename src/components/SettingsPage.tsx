@@ -23,11 +23,13 @@ const AVATARS = [
 
 type Props = {
   profile: UserProfile;
+  theme: 'dark' | 'light';
   onSave: (data: Partial<UserProfile>) => Promise<void>;
   onBack: () => void;
+  toggleTheme?: () => void;
 };
 
-export function SettingsPage({ profile, onSave, onBack }: Props) {
+export function SettingsPage({ profile, theme, onSave, onBack, toggleTheme }: Props) {
   const [name, setName] = useState(profile.name);
   const [bio, setBio] = useState(profile.bio || '');
   const [campusLocation, setCampusLocation] = useState(profile.campus_location);
